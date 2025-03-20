@@ -1,0 +1,62 @@
+Explore about Events method  in javascript.
+--->
+In javascript , there are several  ways to attach event handlers to html element. 
+
+There are 3 common methods:-
+
+1  Inline event
+2  Dom Event handler
+3  addEventListener Event handler (most of the time we use this)
+
+code:-----------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Start Inline Event (means ushi line ma) -->
+
+     <h1>Inline Event</h1>
+     <button onclick="alert('welcome')">greeting</button>
+     <!--on double click -->
+     <button ondblclick="alert('welcome again')"> greeting again</button>
+     <button onmouseover ="alert('welcome2')">greeting3</button>
+    
+     <!--End Inline Event-->
+
+     <!--Start Dom Event Handler-->
+     <h1>Dom Event handler</h1>
+     <button id="myBtn">greeting</button> 
+     <button id="myBtn2">greetingagain</button>
+     <!--End dom Event handler-->
+
+     <!--Start  addEventHandler -->
+     <h1>addEventListner</h1>
+     <button id="myBtn1">greeting</button>
+     <button id="myBtn3">greeting_again</button>
+     <!--End  addEventHandler-->
+     <script>
+        // here we are accessing the above reference.. with the function
+        document.getElementById("myBtn").onclick =() => {
+            alert('Welcome');
+        };
+        document.getElementById("myBtn2").onmouseover = () => {
+            alert('Welcome_Welcome');
+        };
+        
+        // addEventListener
+        // instead of using .on methods we use addEventListener.
+        // (here we have to tell type of addEventListener)
+        document.getElementById('myBtn1').addEventListener('click',() => {
+            alert('Wow');
+        });
+        document.getElementById('myBtn3').addEventListener("mouseover",() => {
+           alert('Wow_Wow_wow');
+        });
+     </script>
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------------------
