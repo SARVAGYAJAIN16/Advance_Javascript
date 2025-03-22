@@ -1,0 +1,236 @@
+Project Todo List 
+--->
+code:---------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+    }
+    html{
+       color:white;   /* with this our Todo List text is white */
+        font-size:50%;
+    }
+    body{
+        width: 100%;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin-top:100px;
+        background-color:black;
+        }
+    li{
+       cursor: pointer;  /* It is a cursor property.The cursor property sets the appearance of the mouse
+             cursor when hovering over an element. The appearance can be set by specifying the type of cursor, 
+             or by loading a specific icon. When using an icon, fallback images can be used, ending with a 
+             mandatory keyword fallback.  */
+            
+        list-style-type:circle;
+        margin: 2rem 0;
+        text-transform:capitalize;
+        font-weight:500;
+        &:hover{
+         color:orange;
+         }
+        }
+        .main_todo_div{
+            width:36rem;
+            display:grid;
+            grid-template-columns: 1fr 0.3fr; /* by this line they are coming side by side 
+                (if not there this line so ek ka nichha ata */
+            align-items:center;
+            height:auto;
+        }
+        button{
+            height:5rem;
+        }
+        h1{
+            font-size:3.6rem;
+            margin-top:4.8rem;
+            margin-right:18rem;
+        }
+        hr{
+            margin-bottom: 3.2rem;
+        }
+        p,
+        li,
+        button{
+            font-size:1.7rem;
+            letter-spacing:0.1rem;
+            line-height:1.6;
+        }
+        button{
+            background-color:#f5ee62;
+            padding: 0.6rem 2.4rem;
+            border-radius:10rem;
+            margin-right:3.6rem;
+            cursor:pointer;
+            transition: all 0.3s linear;
+
+            &:hover{                    /*0.2 is width */
+                box-shadow: inset 0 0 0 0.2rem #f5ee62;
+                /*  In CSS, setting an inset shadow involves creating an inner shadow effect within an element’s boundaries.
+                    Unlike traditional shadows that appear outside the element, an inset shadow gives a recessed or sunken look,
+                    enhancing the element’s visual depth and appearance.
+
+                Note: By default, the shadow generates outside the box but by the use of inset
+                we can create the shadow inside the box.  */
+                background-color:transparent;
+                color:#f5ee62;
+            }
+        }
+        input{
+            padding: 6px 2px;
+            min-width: 32rem;
+            font-size:18px;
+            border-radius:0.6rem;
+            border:none;
+            margin-right:1.2rem;
+        }
+        li:hover + .deleteBtn{
+            box-shadow: inset 0 0 0 0.2rem #f5ee62;
+            background-color:transparent;
+            color:#f5ee62;
+        }
+
+</style>
+<body>
+    <h1>Todo List</h1>
+    <br>
+    <form>
+        <div>
+            <input type="text" id="inputValue">
+            <button class="btn">Add Todo </button>
+        </div>
+        <section class="todo-lists-elem">
+            <!-- <li></li> -->
+            <!-- <button class="deleteBtn">Delete</button> -->
+        </section>
+    </form>
+    <script>
+        const mainTodoElem = document.querySelector(".todo-lists-elem");
+        const inputValue = document.getElementById("inputValue");
+        
+       // let localTodoLists = []; // iska scope alag kar diya so that again we click todo list so array empty na hu ...
+                                  // taki same array ma hi store hu ...
+
+            const  getTodoListFromLocal =() => {
+              return JSON.parse(localStorage.getItem("youtubeTodoList"));// key is passed here // and we getting data so we want in 
+                // original form back to array.. so we use JSON.parse
+            };
+            // this function is added in last..(down)
+             const addTodoListLocalStorage = (localTodoLists) => {
+                return localStorage.setItem("youtubeTodoList",JSON.stringify(localTodoLists));
+             };
+
+           let localTodoLists = getTodoListFromLocal() || [];
+            
+           // adding add to list dynamically
+           const addTodoDynamicElement = (currElem) => {
+            const divElement =  document.createElement("div");
+            divElement.classList.add("main_todo_div");  
+            divElement.innerHTML = `<li> ${currElem} </li> <button class="deleteBtn">Delete</button>`;     
+            mainTodoElem.append(divElement);              
+           };
+
+
+            const addTodoList= (e) => {
+            e.preventDefault();
+
+             // making empty array
+             //let localTodoLists = [];
+
+             const todoListValue= inputValue.value.trim(); /*first and last space will be removed by trim method */
+             // now we will create new array and add previous data in it. and that new array duplicate data we delete
+             // it and that data we add  in local storage. (we are doing because we have studied .map mthod , loops ...
+             // by this method we can show our data in localstorage).
+
+           // localTodoLists = getTodoListFromLocal() || [];// if isha kuch nahi mila tu ya empty array tu dega.
+           inputValue.value = "";// put null when particular value is already present so it will remove the text.
+           // when we dont text anything but click button to do so one time empty space will also run so to remove 
+           // that space we are checking conditions.
+          if( todoListValue != "" && ! localTodoLists.includes(todoListValue)) // by this condition duplicate value will not show in screen.
+           {
+
+             localTodoLists.push(todoListValue); // these data is  add in a array
+           //  localTodoLists =new Set(localTodoLists); // but the problem is push method wont work in set. it work in array only
+            localTodoLists = [...new Set(localTodoLists)]; // so we convert in array (but problem is inside array it is 
+           // making when we enter data so to solve this then use spread opertor.
+           console.log(localTodoLists);
+
+           // now set to localstorage..
+          // localStorage.setItem("youtubeTodoList", localTodoLists); // localTodoLists is an array and in localstorage we have to send 
+           // in  always in string format so convert in string by using JSON.stringify
+
+           localStorage.setItem("youtubeTodoList", JSON.stringify(localTodoLists));
+
+         //   console.log("testing"); // so in form that particular word come and gone (it come for short period of time when just you click) 
+                                    //  because form default behaviour is automaticlly get submitted that why we write 'e' (event object) 
+                                    // and method preventDefault.
+            const divElement =  document.createElement("div");
+            divElement.classList.add("main_todo_div");  
+            divElement.innerHTML = `<li>${inputValue.value}</li> <button class="deleteBtn">Delete</button>`;     
+            mainTodoElem.append(divElement);     
+           }         
+        };
+
+        const showTodoList= () => {     
+            console.log(localTodoLists);
+            localTodoLists.forEach((currElem) => {
+             addTodoDynamicElement(currElem);
+            })
+        };
+
+        showTodoList(); // here function dikha raha ha...
+
+        // remove the data  ( we will use event deligation here)
+        const removeTodoElem = (e) => {
+           //  console.log(e.target);
+             const todoToRemove = e.target;
+           //  let todoListContent = todoToRemove.previousElementSibling.textContent; // .textContent show whole content .
+           let todoListContent = todoToRemove.previousElementSibling.innerText; //here data we get
+           let parentElem = todoToRemove.parentElement;
+           console.log(todoListContent);
+            
+             localTodoLists = localTodoLists.filter((curTodo) => {
+                // comparying with array and want (filter give new array without changing original array)
+                return curTodo != todoListContent.toLowerCase();
+             });
+            // these updated list we have to update in localstorage.. so making function
+             addTodoListLocalStorage(localTodoLists);
+             parentElem.remove();
+
+             console.log(localTodoLists); // updated todolist.. it is 
+
+             // final problem is if we click any where in list between space so all thing will hide ...
+            };
+            
+            
+      // deleting any particular button (field)
+      mainTodoElem.addEventListener("click", (e) => {
+        e.preventDefault();
+    //    console.log(e.target.classList.contains("deletBtn"));
+     if(e.target.classList.contains("deleteBtn")) { // final problem solution
+        removeTodoElem(e);
+     }
+      });
+      
+   
+   document.querySelector(".btn").addEventListener("click", (e) => { //when dealing with form it have 
+     // a default behaviour so to tackle that we are writing 'e'....
+     addTodoList(e);// button ku click karna pa function fire hoga.
+   });
+   </script>
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------
