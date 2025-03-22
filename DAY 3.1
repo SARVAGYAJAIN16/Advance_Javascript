@@ -1,0 +1,100 @@
+Explore about localStorage in javascript...
+  LocalStorage :-->
+
+ The localStorage object allows you to save key/value pairs in the browser.
+ // in console we have to write code and see in application  (and then local storage)
+
+ How to add the data from localStorage
+ localStorage.setItem("youtubeJsCourse", "addingData");
+
+ How to get the data from localStorage
+ localStorage.getItem("youtubeJsCourse");
+
+How to remove the data from localStorage
+localStorage.removeItem("youtubeJsCourse");
+
+Note:-  Local Storage can only store strings, so when you want to store a complex data structure like an array or an object, you need to convert it to a string using JSON.stringify:
+
+•	Json is also work on key value pair.
+Here 2 mainly method is used 
+1 JSON.stringify:
+2 JSON.parse:
+
+
+//* JSON.stringify: Converts a JavaScript object into a JSON string.
+// Useful when you want to send data to a server or store it in a text file, as JSON is a common data interchange format.
+
+//* JSON.parse: Converts a JSON string into a JavaScript object.(it convert json string into original format)
+// Useful when you receive JSON data from a server or read it from a file, and you want to work with it as a JavaScript object.
+
+code:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="addBtn">Add data to local storage</button>
+        <button id="getBtn">Get data to local storage</button>
+        <button id="removeBtn">Remove data to local storage</button>
+    </div>
+<script>
+    // object we have created....
+    // curly bracket we use it is object. and in js everything is object.
+    // this object we have to add in local storage...
+    const studentBioData ={
+        firstName: "Sarvagya",
+        lastName:"Jain",
+        age:20,
+        gender:"male",
+        grade:"A",
+        courses:["Math","science","english"],
+        address: {
+            street: '123 main st',
+            city:"Cityville",
+            state: "state",
+            zipCode: "12345",
+        },
+    };
+                                                                                           //key            value
+     const addTodoList = () => { // key ,value
+       // localStorage.setItem("objectData", studentBioData);// output (in application) -> objectData   [object Object] 
+      // localStorage.setItem("objectData", "studentBioData"); // output                  -> objectData   studentBioData  
+      // so we have to convert with the help of stringify (these data we convert in string)
+      localStorage.setItem("objectData",JSON.stringify(studentBioData)); // so we get key and value
+    };
+    // get from local storage
+     const getTodoList = () =>  {
+        const retrivedStudentData =JSON.parse(
+            localStorage.getItem("objectData") // so in output we get in from of object(original form) 
+            // .parse convert JSON file to again in object.
+        )
+        console.log("retrived from local storage: ", retrivedStudentData);
+     };
+      // remove data
+     const removeTodoList = () => {
+        const removedData = localStorage.removeItem("objectData");
+        // verify removal
+        console.log("data after removal :", removedData);
+     };
+
+
+
+    document.getElementById("addBtn").addEventListener("click",() => {
+       addTodoList();
+    });
+    document.getElementById("getBtn").addEventListener("click",() => {
+      getTodoList();
+    });
+    document.getElementById("removeBtn").addEventListener("click",() => {
+      removeTodoList();
+    });
+</script>
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
