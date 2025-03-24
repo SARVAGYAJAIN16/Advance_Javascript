@@ -1,0 +1,62 @@
+Explore about  Object in JavaScript.............. (part-1)
+
+Objects are a fundamental part of JavaScript, providing a way to group related data and functions together.
+In JavaScript, an object is a collection of key-value pairs, where each key is a string (or a symbol) and
+each value can be any data type, including other objects. Objects can have properties and methods, making them versatile for various use cases.
+
+ Creating Objects:
+
+ There are several ways to create objects in JavaScript. The most common one is using object literals:
+
+ Accessing Properties:
+
+ You can access object properties using dot notation or square bracket notation:
+
+// console.log(person.age);
+// console.log(person.name);
+// console.log(person[`is'Student`]);
+
+ Adding and Modifying Properties:
+
+ You can add new properties or modify existing ones
+
+Code:----------------------------------------------------------------------------------------------------------------------------
+
+// object in js 
+
+// creating object.
+const product ={   // we pass in key : value pair.
+    id:1,
+    pName: "laptop",
+};
+// ex-2
+let person ={
+  name:"sarvagya",
+  age:30,
+  isStudent: false,
+  "is'Student": false, // we cannot access this...with dot 
+  greet:function() {
+    console.log("Welcome to World Best javascript");
+  },
+};
+// Accessing properties: 
+// access by dot notation or square notation..
+
+console.log(person.age);
+console.log(person.name);
+console.log(person.isStudent);  // false
+//"is'Student": false, -> to access this we use square bracket and pass as an string. 
+console.log(person["is'Student"]); // false
+// here above you can use back tick also...
+console.log(person[`is'Student`]); // false
+
+// adding and modifying properties..
+person.job ="web dev";
+person.age = 18;
+//or 
+person["age"]= 19;
+console.log(person);
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
