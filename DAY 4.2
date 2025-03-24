@@ -1,0 +1,34 @@
+Explore about JavaScript Get Date Methods / Getting Components:
+
+ You can get various components of a date using the methods of the Date object:
+
+// const currentDate = new Date();
+ In a date object, the time is static.
+// const year = currentDate.getFullYear();
+ const month = currentDate.getMonth(); // 0-based index
+// const date = currentDate.getDate();
+// const day = currentDate.getDay();
+// console.log(currentDate);
+// console.log(day);
+ In JavaScript, the first day of the week (day 0) is Sunday.
+day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
+
+ code:--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ // get date method / getting component.
+const currentDate = new Date(); // it return current date 
+const year = currentDate.getFullYear();
+console.log(year); // output 2025
+
+const  month = currentDate.getMonth();
+console.log(month); // output 2 (0 based indexing...)
+
+const date = currentDate.getDate();
+console.log(date);// output 24
+
+const day = currentDate.getDay();
+console.log(day); // output 1 
+// sunday represent zero..
+// saturday is 6.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
