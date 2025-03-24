@@ -1,0 +1,81 @@
+Explore about the JavaScript Get Time Methods / Getting Components and set time Methods ....
+
+ JavaScript Get Time Methods / Getting Components: 
+
+ const currentTime = new Date();
+
+ const hours = currentTime.getHours();
+ const minutes = currentTime.getMinutes();
+ const seconds = currentTime.getSeconds();
+ const time = currentTime.getTime();
+ console.log(time);
+
+
+ JavaScript Set Time Methods / Getting Components:
+
+ // const date = new Date();
+
+ setHours(hourValue[, minuteValue[, secondValue[, millisecondValue]]]): Sets the hours for a specified date according to local time.
+ // date.setHours(10);
+ // console.log(date); // Date object with the hours set to 10
+
+ setMinutes(minuteValue[, secondValue[, millisecondValue]]): Sets the minutes for a specified date according to local time.
+// date.setMinutes(30);
+// console.log(date); // Date object with the minutes set to 30
+
+ setSeconds(secondValue[, millisecondValue]): Sets the seconds for a specified date according to local time.
+// date.setSeconds(45);
+// console.log(date); // Date object with the seconds set to 45
+
+ setMilliseconds(millisecondValue): Sets the milliseconds for a specified date according to local time.
+// const date = new Date();
+
+// date.setMilliseconds(500);
+// console.log(date); // Date object with the milliseconds set to 500
+
+ setTime(timeValue): Sets the Date object to the time represented by a number of milliseconds since January 1, 1970, 00:00:00 UTC.
+// const date = new Date();
+// date.setTime(1832090690883);
+// console.log(date); // Date object representing the specified time
+Code:---------------------------------------------------------------------------------------------------------------
+
+// Javascript get time method / getting components.
+
+const currentTime= new Date();
+// hours
+const hours = currentTime.getHours();
+console.log(hours);  // output 12 (our time is 12:26pm)
+// minutes
+const minutes = currentTime.getMinutes();
+console.log(minutes);// 29 
+// seconds
+const seconds = currentTime.getSeconds();
+console.log(seconds);// 7
+// getTime
+const time =currentTime.getTime();
+console.log(time); //1742799669199 in ms coming from 1970.
+ 
+
+// Javascript set time method / getting components:
+
+const date = new Date();
+// set hours 
+date.setHours(10);
+console.log(date); // 2025-03-24T05:13:15.370Z
+// in console it will see right..
+
+//  seconds 
+date.setSeconds(34);
+console.log(date); // 2025-03-24T05:19:34.451Z
+
+//  milliseconds
+date.setMilliseconds(500);
+console.log(date); // 2025-03-24T05:21:34.500Z 
+// it will not see here... 
+
+// setTime (timeValue)
+date.setTime(1632090690883);
+console.log(date); // output 2021-09-19T22:31:30.883Z
+
+
+-------------------------------------------------------------------------------------------------------------------------------
