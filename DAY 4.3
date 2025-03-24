@@ -1,0 +1,39 @@
+ Explore about JavaScript Set Date Methods / Setting Components:
+
+ setFullYear(yearValue[, monthValue[, dayValue]]): Sets the full year for a specified date according to local time.
+
+ date.setFullYear(2025);
+// console.log(date); // Date object with the year set to 2025
+
+ setMonth(monthValue[, dayValue]): Sets the month for a specified date according to local time.
+date.setMonth(5); // June (months are zero-based)
+// console.log(date); // Date object with the month set to June
+
+ setDate(dayValue): Sets the day of the month for a specified date according to local time.
+// date.setDate(15);
+// console.log(date); // Date object with the day of the month set to 15
+
+Code:-----------------------------------------------------------------------------------
+
+// Javascript set Date methods / setting components.
+// setFullYear method.
+const date = new Date();
+console.log(date); // output 2025-03-24T06:29:06.810Z
+date.setFullYear(2026);
+console.log(date); // output 2026-03-24T06:31:42.232Z
+
+// setMonth
+const date2 = new Date();
+date2.setMonth(3);
+console.log(date2);// output 2025-04-24T06:35:08.345Z
+
+// setDate(dayValue)
+const date3 = new Date();
+date3.setDate(15);
+console.log(date3); // output 2025-03-15T06:41:51.824Z
+
+------------------------------------------------------------------------------------------------
+
+
+
+
