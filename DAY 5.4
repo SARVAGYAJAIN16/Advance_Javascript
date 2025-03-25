@@ -1,0 +1,31 @@
+Understand about JSON (javascript Object notations) in javascript.
+JSON is a data interchange format derived from JavaScript objects. Objects can be easily converted to JSON and vice versa.
+
+Code:-----------------------------------------------------------------------------------
+/ JSON (javascript object notations)
+
+let student = {
+       id: 1,
+       sName: "sarvagya",
+       sAge: 20,
+       isStudent: false,
+       greet: function () {
+         console.log(
+           `hey my id is ${student.identity} & my name is ${student.sName}`
+         );
+       },
+     };
+     let jsonData = JSON.stringify(student); // it convert in string.
+     console.log(jsonData); 
+     // output 
+    // {"id":1,"sName":"sarvagya","sAge":20,"isStudent":false}
+    
+    // note:-------------- JSON vs object-----------------------------
+    // In JSON key have double quotes while in object key does not have 
+    // double quotes...
+
+    // again convert in original ( string to object)
+    let parseObject = JSON.parse(jsonData);
+    console.log(parseObject);
+
+    // output { id: 1, sName: 'sarvagya', sAge: 20, isStudent: false }
