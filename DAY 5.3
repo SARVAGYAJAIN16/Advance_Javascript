@@ -1,0 +1,85 @@
+ Explore about Data Modeling , pass by value , pass by references , Comparison by Reference  in object.
+ data modeling :---
+ Data modeling is the process of creating a visual representation of either a whole information system or parts of it to communicate connections between data points and structures. 
+ The goal is to illustrate the types of data used and stored within the system, the relationships among these data types, the ways the data can be grouped and organized
+ and its formats and attributes.
+
+ Objects are excellent for modeling real-world entities. For instance, you might represent a car, a user, or a product as an object with properties like color, brand, username, etc.
+
+ Code:---------------------------------
+
+ let car = {
+   brand: "Toyota",
+   model: "Camry",
+   year: 2022,
+   start: function () {
+     console.log("Engine started!");
+   },
+ };
+---------------------------------------
+
+.......pass by value and pass by references....
+ In JavaScript, primitive data types like numbers and strings are passed by value, while objects are passed by reference.
+
+ Passing by value: When passing by value, a copy of the primitive value is created and passed to the function or assigned to a variable. Any changes made to the copy do not affect the original value.
+
+ Passing by reference: When passing by reference, a reference to the memory location of the object is passed to the function or assigned to a variable. Any changes made to the object through this reference will affect the original object.
+
+ Object.assign() is used to copy properties from one or more source objects to a target object.
+
+ .........Comparison by Reference:.............
+
+ Two objects are equal only if they refer to the same object.
+ Independent objects (even if they look alike) are not equal:
+
+ final code:-----------------------------------------------
+ 
+ // call by references and call by value..
+// call by value 
+let a=10;
+const modifyValue = (x) => ( x = 20);
+console.log(modifyValue(a));  // 20 
+console.log(a);               // 10
+
+//  call by references 
+
+let obj = {id:2, name:"sarvagya"};
+
+let obj1 = obj;
+obj1.name = "sarvagya_new";
+console.log(obj1);
+console.log("original", obj);
+// output 
+//    { id: 2, name: 'sarvagya_new' }
+ //     original { id: 2, name: 'sarvagya_new' }
+
+ // another way used with the help of Object.assign()
+
+let obj2 ={id:5, name: "Sarvagya"}; 
+//             (targeting on empty object, data we will give )
+let newObj = Object.assign({}, obj2);
+newObj.name ="sarvagya_new";
+console.log(newObj);
+console.log("original",obj2);
+// output 
+//{ id: 2, name: 'sarvagya_new' }
+//original { id: 2, name: 'sarvagya_new' }
+//{ id: 5, name: 'sarvagya_new' }
+//original { id: 5, name: 'Sarvagya' }
+
+// Comparison by reference:
+  
+const obj3 = {name:"sarvagya"};
+const obj4 = {name:"sarvagya"};
+const isEqual = obj3 == obj4 ? true : false; 
+console.log(isEqual); // false
+
+// to get true it have to give reference value by copying in 
+// another variable ..
+
+const obj5 = {name:"sarvagya"};
+const obj6 = {name:"sarvagya"};
+const obj7 = obj5;
+const isEqual2 = obj5 == obj7 ? true : false; 
+console.log(isEqual2); // true
+---------------------------------------------------------------------------------------------
