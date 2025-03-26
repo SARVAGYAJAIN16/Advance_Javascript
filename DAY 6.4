@@ -1,0 +1,74 @@
+Explore about Scope Chaining in javaScript...........................
+                           
+  Scope Chaining:
+
+ Definition: Scope chaining is the process by which JavaScript, when looking for the  value of a variable, checks the current scope and then looks in the outer (enclosing) scopes until it finds the variable or reaches the global scope.
+
+todo Key Concept: Variables in inner scopes have access to variables in their outer scopes, creating a chain of accessible scopes.
+
+ Global Scope:
+ Variables: Variables declared outside of any function or block have global scope.
+ Access: Global variables are accessible from any part of the code, including inside  functions and blocks.
+
+  var globalVariable = "I am a global variable";
+
+ function exampleFunction() {
+   console.log(globalVariable); // Accessible within the function
+ }
+
+ console.log(globalVariable); // Accessible globally
+
+  Function Scope:
+ Variables: Variables declared inside a function have function scope.
+ Access: Function-scoped variables are only accessible within the function where they are declared.
+  function exampleFunction() {
+     var functionScopedVar = "I am a function-scoped variable";
+     console.log(functionScopedVar); // Accessible within the function
+   }
+
+ console.log(functionScopedVar); // Error: functionScopedVar is not defined
+
+  Block Scope:
+ Variables: Variables declared with let and const inside a block (e.g., an if statement or a for loop) have block scope.
+Access: Block-scoped variables are only accessible within the block where they are declared
+
+
+                                               Global Variable vs. Local Variable:
+ Global Variable: A variable declared in the global scope is referred to as a global variable. It has global visibility and can be accessed from anywhere in the code.
+
+ Local Variable: A variable declared within a function (function scope) or a block (block scope) is often referred to as a local variable. It has local visibility, limited to the function or block where it's declared.
+
+Code:--------------------------------------------------------------------------------------------------------------------------
+// lexical scoping.... simple means to we can see in screen acc to it ..
+
+ var a = 5;
+ var b = 10;
+//  what will be the value of a?.... 5
+
+// global vs local 
+const globalVariable = " I am a global variable";
+
+function myFunction() {
+    // function scope 
+       const functionVariable = "I m a function variable ";
+    if(true){
+        // block scope
+    const blockVariable = " im a block variable";
+    console.log(blockVariable);// output im a block variable
+    console.log(functionVariable);// output I am a function variable
+    console.log(globalVariable);// output  I am a global variable
+}
+console.log(blockVariable); // error blockVariable is not defined.
+}
+myFunction();
+// note:---
+// function ka variable ka scope uska inside hi ha.. uska outside nahi..
+
+// 'if' or  'switch' ka scope is called block scope
+ 
+ // Scope Chaining means if in inner scope (means inside 'if')that variable is not define so 
+ // uska parent scope check karo (means whole function) and it is define so it will print that 
+ // value... and  if not so first check inner scope then parent Scope and then global can be access
+ // by anyone so this is the work of scope chaining....
+--------------------------
+
