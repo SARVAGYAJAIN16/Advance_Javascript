@@ -1,0 +1,42 @@
+Explore about synchronous vs Asynchronous in javascript.
+------>
+                  Synchronous vs Asynchronous ….
+
+ Synchronous code executes line by line, blocking further execution until each line is completed, while asynchronous code allows other
+ code to continue executing while it waits for an asynchronous operation to complete.
+ code:----
+  // It is Synchronous code...
+// const fun2 =() => {   // 2 
+//     console.log("fun2 start and ends");
+// };
+// const fun1 = () => {             //1 control
+//     console.log("fun1 is start");
+//     fun2();
+//     console.log("fun1 ends"); //3 
+// };
+// fun1();
+// // output 
+// //fun1 is start
+// //fun2 start and ends
+// //fun1 ends
+
+//  It is asynchronous code...
+const fun3 = ()  => {
+    setTimeout(() => { // it tell asynchronous behavior.. now code will go to web Api and wait for 2sec.
+        // web api is not part of javascript. it provided by browser
+        console.log("fun3 start and ends");
+    },2000); // 2 sec after we get output here 
+};
+
+const fun4 = () => { // it will run first
+   console.log("fun4 is start");
+   fun3();
+   console.log("fun4 ends");
+};
+fun4();
+// output 
+//fun4 is start
+//fun4 ends
+// after 2 sec ... next line will come
+// fun3 start and ends
+-----------------------------------------------------------------------------------------------------------------
