@@ -1,0 +1,118 @@
+Explore about  EcmaScript 2015  in javascript ....(what are the new feature were add in 2015)..
+--->
+
+// Object Properties 
+const name ="sarvagya";
+const age = 50;
+
+// traditional way
+//const person ={ name: name,age:age};
+// if key and value both are same then value part
+// we can omitted.
+
+// shorthand notation then for object  property
+const person = {name,age};
+console.log(person);
+// output { name: 'sarvagya', age: 50 }
+//-----------------------------------------------
+// Destructuring Array 
+
+// 1 Extracting specific elements:
+//const  numbers = [10,20,30];
+//const first = numbers[0]; // taditional way
+//console.log(first);// 10
+// destructuring
+
+const numbers2 =[10,20,30];
+const [first,second,third]= numbers2; // here in square bracket variable ka name ayenga.
+console.log(first); // 10
+
+//2  Ignoring elements:
+const number3 =[10,20,30];
+const [, , z] = number3;
+console.log(z); // 30
+// ---------------------------------------
+// Interview Questions
+// Write a program to swap two variables without using 3rd variable?
+let a = 10;
+let b = 30;
+// a=30, b=10
+// Mostly will do using 3rd var
+// let c = b; //c=30
+// b = a; // b=10
+// a = c; //a=30
+// without 3 variable .....
+
+[a,b] =[b,a];
+console.log(a,b); // 30 10
+//------------------------------------------
+
+// Destructuring object:
+const user = {name:"sarvagya",age:50};
+
+// Extracting properties:
+const myName = user.name;// traditional way
+console.log(myName); // sarvagya
+
+// new way
+const user2 = {name2:"sarvagya",age2:50};
+const { age2 , name2} = user2;
+console.log(age,name);
+// output 50 sarvagya
+
+// Renaming properties:
+const user3 = {name3:"sarvagya",age3:50};
+const {name3: fullName, age3} = user3;
+// rename "name" to "fullName"
+console.log(fullName); // sarvagya
+//---------------------------------------------------------
+
+// spread Opertor 
+
+// 1 copying an array
+let fruits = ["Apple", "Orange","mango","banana"];
+let newFruits =[...fruits];
+console.log(newFruits);
+// output [ 'Apple', 'Orange', 'mango', 'banana' ]
+
+// 2 Concatenating array / combining arrays
+ const number1 = [1,2,3,4];
+ const number2 = [4,5,6];
+ const newNumber =[...number1, ...number2];
+ console.log(newNumber); // [ 1, 2, 3, 4, 4, 5, 6 ]
+
+ // 3 Adding elements to existing array
+ let fruits1 = ["Apple", "Orange","mango","banana"];
+// fruits1.push("gauva");
+ //console.log(fruits1);
+ // output [ 'Apple', 'Orange', 'mango', 'banana', 'gauva' ]
+// another way
+fruits1.push(... ["guava","grapes"]);// means (spread)...put as it is then add this in array.
+console.log(fruits1);// [ 'Apple', 'Orange', 'mango', 'banana', 'guava', 'grapes' ]
+
+// usecase spread :- it convert string into array of its indivival characters.
+
+const city = "indore";
+console.log(city.split("")); //[ 'i', 'n', 'd', 'o', 'r', 'e' ]
+// new way
+const city2 = "indore";
+console.log([...city2]); // [ 'i', 'n', 'd', 'o', 'r', 'e' ]
+//---------------------------------------------------------------------------------------
+
+// Rest Parameters - Modern Javascript
+
+// traditional way of doing it
+const sum =(a,b,c,d) => {
+    return a + b + c + d;
+};
+console.log(sum(1,2,3,4)); //10 
+// with rest parameter
+
+const sum2 = (...number) => {
+ return number.reduce((accum ,curVal) => (accum = accum + curVal),0); // 0 is here accum default value..
+};
+console.log(sum2(1,2,3,4,5,6,7,8,9,10)); //55
+----------------------------------------------------------------------
+
+
+
