@@ -1,0 +1,55 @@
+Explore about   Hoisting is a JavaScript...
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+This means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+
+todo When a function declaration is hoisted, its entire definition (including the body) is moved to the top of its containing scope during the creation phase. 
+This means that you can call the function before it's actually declared in the code, and it will still work as expected.
+
+code:--------------
+// before hoisting.....
+// let myVar = 10;
+// const greet = () => {
+//   console.log("Welcome, If you are reading this, Don't forget you are awesome");
+// };
+
+// console.log(myVar);
+// greet();
+
+// output 
+// 10
+// Welcome, If you are reading this, Don't forget you are awesome
+
+// after hoisting
+// what happen when  before defining we will call...
+// remember in var only hoisting will work.....
+// before...
+console.log(myVar);
+greet();
+
+var myVar = 10;
+function greet ()  {
+  console.log("Welcome, If you are reading this, Don't forget you are awesome");
+}
+// note :- read line how_js_works from notes (before executing the code)
+// output 
+//undefined
+//Welcome, If you are reading this, Don't forget you are awesome
+
+
+// remember in var only hoisting will work...
+// after (when hoisting works so code look like)
+var myVar;   // top par ata ha (like this)..see_notes
+function greet(){}  // top par ata ha  (like this)
+
+console.log(myVar);
+greet();
+
+var myVar = 10;
+function greet ()  {
+  console.log("Welcome, If you are reading this, Don't forget you are awesome");
+}
+// in let or const if we use so it will give error...........
+// because let have block scope so it do not allow to do hoisting.
+// if you make this function with fat arrow so it will give error. (in let)....
+// define function and then call (right way).....
+
