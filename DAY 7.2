@@ -1,0 +1,119 @@
+Explore about  ECMAScript Features (2018) / ES9  and   ECMAScript (2019)                    
+  ECMAScript Features (2018) / ES9
+
+ List of new useful features added in ES8  
+ Rest/Spread Properties
+ Promise.prototype.finally()  // later in promises we will study..
+
+ Rest/Spread Properties
+
+ ES6 introduced the concept of a rest element when working with array destructuring:
+ const numbers = [1, 2, 3, 4, 5];
+ [first, second, ...others] = numbers;
+
+ and spread elements:
+ const numbers = [1, 2, 3, 4, 5]
+ const sum = (a, b, c, d, e) => a + b + c + d + e
+ const sumOfNumbers = sum(...numbers)
+
+   ECMAScript Features (2019) / ES10
+
+
+ List of new useful features added in ES8  
+ Array.prototype.{flat,flatMap}
+ Object.fromEntries()
+ String.prototype.{trimStart,trimEnd}
+ Symbol.prototype.description
+ Optional catch binding
+
+
+  Array.flat & Array.flatMap
+
+ flat() is a new array instance method that can create a one-dimensional array from a multidimensional array. (nested arrays into a single, flat array.)
+
+ const nestedArray = [1, 2, [3, 4], 5];
+const nestedArray1 = [1, [2, [3, [4]]], 5];
+
+ flatMap() is a new Array instance method that combines flat() with map(). It’s useful when calling a function that returns an array in the map() callback, but you want your resulted array to be flat:
+
+Object.fromEntries()
+
+ Objects have an entries() method, since ES2017.
+ It returns an array containing all the object own properties, as an array of [key, value] pairs:
+
+ ES2019 introduces a new Object.fromEntries() method, which can create a new object from such array of properties:
+
+// final code:-----------------------------
+// object / rest operator
+const student = {
+    age:10,
+    name:"vinod",
+    isStudent:true,
+};
+const {age,...others} = student;
+console.log(others);
+// here in ...others (remaining field is going)....
+
+// Object and Spread operator
+ const obj1 = {a:10,b:20,c:50};
+ const obj2 = {c:30,d:40};
+ const newObj = {...obj1,...obj2};
+ console.log(newObj); // { a: 10, b: 20, c: 30, d: 40 }
+ // here obj2 will update or overwrite obj1 (same data).
+
+ // ECMA Script Features (2019) / ES10
+
+ // Array.flat & Array.flatMap
+ const nestedArray = [1,2,[3,4],5];
+ const flattenedArray = nestedArray.flat();
+ console.log(flattenedArray); // [ 1, 2, 3, 4, 5 ]
+
+ const nestedArray1 = [1,[2,[3,4]],5];
+ // 1 const flattenedArray1 = nestedArray1.flat(); 
+ //1  console.log(flattenedArray1); // [ 1, 2, [ 3, 4 ], 5 ]
+ const flattenedArray1 = nestedArray1.flat(2); // 2 times we have to remove array.
+ console.log(flattenedArray1); // [ 1, 2, 3, 4, 5 ]
+ //-----------------------------------------------------------
+ 
+// flatMap()
+
+// note:-- remember in array we have method is map(), filter(), reduce()..
+//-------------------------------------
+// Object.entries  do input is in object so convert in array..
+// Object.fromEntries so, again back to object it bring.
+ 
+const person = { name:"lakan", age:30};
+const entries = Object.entries(person);
+console.log(entries); // [ [ 'name', 'lakan' ], [ 'age', 30 ] ]
+
+const newPerson = Object.fromEntries(entries);
+console.log(newPerson); // { name: 'lakan', age: 30 }
+
+// note:--  person and newPerson are not same. beacuse object we compare with the help of 
+// reference . not with their contents.  ( both are stored in different memeory)
+
+// ------------------------------------------------------
+
+// trimStart()  it removed white space from start of the original string.
+
+let str ="    jain   " ;
+// console.log(str.length); // 11
+console.log(str.trim().length); // 4
+
+//trimEnd();  // remove space from end of the string.
+
+//---------------------------------------------------------------
+
+// Symbol.prototype.description // (not imporant)
+//--------------------------------------------------------------------
+
+// Optional catch binding... (later .... see notes)
+// -------------------------------------
+
+
+
+
+
+
+
+
