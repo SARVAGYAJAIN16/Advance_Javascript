@@ -1,0 +1,107 @@
+Explore about ECMAScript Features (2016) and 2017....
+ECMAScript Features (2016):
+
+ Exponentiation Operator
+
+
+ ES7 introduces a new mathematical operator called exponentiation operator. This operator is similar to using Math.pow() method.
+ Exponentiation operator is represented by a double asterisk **. The operator can be used only with numeric values.
+
+ syntax
+// base_value ** exponent_value;
+
+ Basic usage:
+let base = 2;
+let exponent = 3;
+
+ In expressions:
+ calculates the area of a circle with a radius of 5 units.
+let area = Math.PI * 5 ** 2;
+ console.log(area.toFixed(2));
+
+
+                            ECMAScript Features (2017) / ES8
+
+  String padding
+
+ String padding in JavaScript is a way to add extra characters (like spaces) to a string to make it a specific length.
+
+todo  Use Case: Makes formatting text easier and more predictable, especially for tables, alignments, and UI elements. No more messy, uneven lines disrupting your visual spells!
+
+/ Using padStart() to pad from the beginning:
+// const companyName = "Kodyfier";
+
+// Using padEnd() to pad from the end:
+
+ todo Key points:
+ Both padStart() and padEnd() create a new padded string without modifying the original one.
+
+  They take two arguments:
+   - targetLength: The total length of the padded string.
+  - padString (optional): The string to use for padding (defaults to spaces).
+
+ If the original string is already longer than or equal to targetLength, it's returned as-is.
+
+
+ trailing commas
+
+ This feature allows to have trailing commas in function declarations, functions calls, array literal & object literal:
+Example in object in last we add comma …….so that in dynamic way   we can add key and value….
+
+//  Object literal
+// const person = {
+//   firstName: "John",
+//   lastName: "Doe",
+//   age: 30,
+// };
+
+
+code:--------------------------------------------------------------------------------------------------------------------------------------------------------
+// ECMAScript Features (2016):
+
+// Basic usage:
+let base =2;
+let exponent = 3;
+console.log("using Math.pow()", Math.pow(base,exponent)); // 8 
+// new way  (using exponentiation operator)
+console.log("using exponentiation operator",base ** exponent); // 8
+
+// In expression:
+let area = Math.PI * 5 ** 2;
+console.log(area); // 78.53981633974483
+console.log(area.toFixed(2)); // 78.54
+
+// 2 array.includes() method 
+// (we have already studied)...
+
+// ------------------------------------------------------------------------------
+// ECMAScript Features (2017): / ES8
+
+// String padding // use for adding extra spaces in starting or in end..
+
+// ---> padStart() (from begning)
+const companyName = "Hktechnology"; //12 length
+//const paddedName = companyName.padStart(7); // nothing happen because actual length of input string must br bigger 
+// then the use in parameter then only it will work.
+
+// const paddedName = companyName.padStart(13); // so after 1 space it will print.
+//console.log(paddedName);
+
+// ---> using padEnd() to pad from the end.
+//const paddedName = companyName.padEnd(15);
+//console.log(paddedName); // after we get spaces(we cannot see so using *)
+
+const paddedName = companyName.padEnd(15,"*");
+console.log(paddedName); // Hktechnology***
+
+
+//  trailing commas
+function greet (name,age,){
+    console.log(`hello ${name}, you are ${age} years old`);
+}
+greet ("john",30,);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
