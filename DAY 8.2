@@ -1,0 +1,137 @@
+  Explore about   ECMAScript Features (2022) / ES13 and   ECMAScript Features (2023) .................
+  ------>
+ // 2022
+
+  List of new useful features added in ES8  
+  .at() function for indexing
+  Object.hasOwn(obj, propKey)
+
+  .at()
+
+ Before ES2022, square bracket notation was used to fetch a particular element in an array. This method is straightforward unless you need to perform a 
+ backward iteration, i.e., negative indexing. In the case of negative indexing, the common practice was to use arr[arr.length — N], where array length is
+ referred to and indexed from the end.
+
+ The .at() method introduced in ES2022 has simplified this process. In a case of positive indexing, .at() will work the same as the square brackets. But for
+ negative indexing, the .at() method allows starting the iteration from the end.
+
+// const array = [1, 2, 4, 5, 6, 7];
+// // console.log(array[array.length - 1]);
+// console.log(array.at(-1));
+
+ Note Datatypes supporting this function. 
+ String
+ Array
+ All Typed Array classes: Uint8Array etc.
+
+
+ Object.hasOwn(obj, propKey)
+
+ Object.hasOwn() is a static method that you can use to check if a property exists in an object or not. It returns true if the specified object contains
+ the indicated property as its own, and if the property is inherited or doesn’t exist, it returns false. This method takes the object as the first argument
+ and the property you want to check as the second.
+
+ Object.hasOwn is the intended alternative for the Object.prototype.hasOwnProperty method. Although Object.prototype.hasOwnProperty has been in JavaScript
+ specification for quite a time, it has some drawbacks.
+
+ Issues with hasOwnProperty
+ Issue 01: Doesn't work for objects created using Object.create(null)
+
+const student = Object.create(null);
+console.log(typeof student);
+student.name = "vinod";
+// console.log(student.hasOwnProperty("name"));
+console.log(Object.hasOwn(student, "name"));
+
+ // 2023
+ ECMAScript Features (2023)
+
+ List of new useful features added in ES8  
+ Array.findLast()
+ Array.findLastIndex()
+ Array.prototype.toReversed()
+ Array.prototype.toSorted(compareFn)
+ Array.prototype.toSpliced(start, deleteCount, ...items)
+ Array.prototype.with(index, value)
+
+
+  Array.findLast() & Array.findLastIndex()
+
+ This function will allow us to find element from the last to first of the array based on a condition.
+ const array = [1, 2, 3, 4, 5, 6, 4];
+
+
+  New Array.prototype functions
+
+ Array.prototype.toSorted(compareFn);
+
+ Array.prototype.toSpliced(start, deleteCount, ...items);
+
+ Array.prototype.with(index, value);
+The with() method in JavaScript is used to change the value of an element at a specific index in an array. It takes two arguments: the index of the
+element to be changed and the new value. It returns a new array with the changed element, leaving the original array unchanged.
+
+final code:-------------------------------------------------------------------------------------------------------------------------------------------------------------
+// 2022
+// at opertor for also using last index using negative.
+
+const array =[1,2,4,5,6,7];
+console.log(array.at(-1)); // 7
+
+// Object.hasOwn
+const book ={
+    name: "World Best JS Learner",
+    author: "Sarvagya Jain",
+};
+console.log(book.hasOwnProperty("name")); // true
+console.log(book.hasOwnProperty("price")); // false
+
+// using Object.hasOwn method
+
+console.log(Object.hasOwn(book,"name")); // true
+
+// 2023 
+
+// Array.findLastIndex() and Array.findLast()
+
+const array2= [1,2,3,4,5,6,4];
+console.log(array2.findLast((elem) => elem)); // 4
+console.log(array2.findLastIndex((elem) => elem)); //6
+
+// New Array.prototype function
+
+const myNames = ["vinod","sarvagya","ram","shayam"];
+
+// 1 .toReversed():
+const reverseNum = myNames.toReversed();
+console.log("original",myNames);
+console.log("reversed",reverseNum);
+// output
+// original [ 'vinod', 'sarvagya', 'ram', 'shayam' ]
+//reversed [ 'shayam', 'ram', 'sarvagya', 'vinod' ]
+
+// 2 .toSorted():
+const sortedArr = myNames.toSorted();
+console.log("original", myNames);
+console.log("sorted", sortedArr);
+// output 
+//original [ 'vinod', 'sarvagya', 'ram', 'shayam' ]
+//sorted [ 'ram', 'sarvagya', 'shayam', 'vinod' ]
+
+//3  .tospliced
+const spliceArr = myNames.toSpliced(1,1,"sarvagya jain") // start from index 1, delete count(delete current ),
+console.log("original",myNames);
+console.log("spliced",spliceArr);
+//output
+//original [ 'vinod', 'sarvagya', 'ram', 'shayam' ]
+//spliced [ 'vinod', 'sarvagya jain', 'ram', 'shayam' ]
+
+//4 .with(index,value): we can change any value from specific index in a array..
+
+const replaceWith = myNames.with(1,"jainsarvagya");
+console.log("original",myNames);
+console.log("replaced",replaceWith);
+// output 
+// original [ 'vinod', 'sarvagya', 'ram', 'shayam' ]
+// replaced [ 'vinod', 'jainsarvagya', 'ram', 'shayam' ]
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
