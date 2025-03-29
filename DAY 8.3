@@ -1,0 +1,40 @@
+Understand about Event Propagation and Event Delegation in advance javascript..
+--------->                                                    
+                                      Event Propagation: 
+ Event propagation refers to the process of how events propagate or travel through the DOM (Document Object Model) hierarchy. 
+  In JavaScript, there are two phases of event  propagation: capturing phase and bubbling phase. Understanding event propagation is crucial for 
+  managing and handling events in complex web applications. 
+ 
+ Phases of Event Propagation: 
+Capturing Phase:
+The event starts from the root of the DOM and goes down to the target element.
+Handlers registered for the capturing phase are executed.
+
+Target Phase:
+The event reaches the target element.
+The handler registered for the target phase is executed.
+
+Bubbling Phase:
+The event starts from the target element and bubbles up to the root of the DOM.
+Handlers registered for the bubbling phase are executed. 
+
+ event.stopPropagation() 
+ The stopPropagation() method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases. 
+
+To achieve event capturing, you can use the third parameter of the addEventListener method,
+Which specifies whether the event should be captured during the capturing phase. Setting it to true will activate the capturing phase.
+Example:
+  document
+       .getElementById(“outer”)
+       .addEventListener(“click”,callOuter,true); // true means we want capturing phase and we  don’t want default phase (bubbling phase)  so not top  to bottom we will flow.
+
+
+                           Event Delegation: 
+
+ Event delegation is a concept in JavaScript where instead of attaching event listeners to individual elements, you attach a single event listener
+ to a common ancestor of those elements. This is particularly useful when you have a large number of similar elements and want to reduce the number
+ of event listeners, improve performance, and simplify code. 
+
+ Example: List with Delegation 
+ Consider a scenario where you have an unordered list (<ul>) with multiple list items (<li>), and you want to handle click events on each list item. 
+ Instead of adding a separate event listener to each list item, you can use event delegation. 
