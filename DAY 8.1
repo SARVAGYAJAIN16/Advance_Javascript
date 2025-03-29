@@ -1,0 +1,75 @@
+ Explore about ECMAScript Features (2021) / ES12
+
+ List of new useful features added in ES8  
+ String.prototype.replaceAll()
+ Logical Assignment Operators (||=, &&=, ??=)
+ Numeric Separators
+ Promise.any()
+
+
+ String.prototype.replaceAll()
+
+ replaceAll in JavaScript is a function that replaces all occurrences of a specified value with another value in a given string.
+
+ Replacing all occurrences of a word:
+ const originalString = "Hello, world! Hello again.";
+
+ Replacing multiple spaces with a single space:
+ const text = "This   has   extra       spaces.";
+
+
+  Logical Assignment Operators (||=, &&=, ??=)
+
+
+ Logical OR-Assignment (||=): This operator assigns the value of its right-hand operand to its left-hand operand if the left-hand operand
+ evaluates to a falsy value (false, null, undefined, 0, '', NaN). Otherwise, it leaves the left-hand operand unchanged.
+
+ Logical AND-Assignment (&&=): This operator assigns the value of its right-hand operand to its left-hand operand if the left-hand operand
+ evaluates to a truthy value. Otherwise, it leaves the left-hand operand unchanged.
+
+
+  Numeric Separators
+
+  This feature allows underscores (_) to be used as separators within numeric literals to improve readability.
+
+  code:------------------
+  // 2021
+// replaceAll()
+const originalString = "Hello, world! hello again.";
+const newString = originalString.replaceAll("hello","hi");
+console.log(newString); // Hello, world! hi again.
+
+// Replacing multiple spaces with a single space:
+// between letter space is there so we can remove by this..
+
+const text = " This    has   extra       spaces";
+const normalizedText = text.replaceAll(/\s+/g," ") //  '\s' is space
+console.log(normalizedText); // This has extra spaces
+
+
+// Logical Assignment Operators..
+
+// 1 logical OR-Assignment (||=) pipe operator
+
+let y=10;
+y ||=20; // or y||=20 is same thing
+y= y || 20; // if y is false here then we get 20
+console.log(y); // 10 (unchanged).
+
+// 2 logical AND- Assignment
+
+//let z=10;
+let z=0;    // false
+z &&= 20; // z = z && 20;
+console.log(z); // 20 ( z is true so right side will get printed)
+// putting z=0;
+console.log(z); // 0   (false is given  so false only it will return)
+
+
+// Numeric Separtors (it allow underscores to used as separators)
+
+const bigNumber = 1_000_000;
+console.log(bigNumber); // 1000000
+
+-------------------------------------------------------------------------------------------------------------------------
+
