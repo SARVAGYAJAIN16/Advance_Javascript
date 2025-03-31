@@ -1,0 +1,49 @@
+ Explore about Callback hell and  Promise in JavaScript... part-1
+                            
+                     Callback hell
+
+ Callback hell, also known as the Pyramid of Doom, refers to a situation in asynchronous JavaScript programming where multiple
+ nested callbacks are used to handle asynchronous operations. This often results in code that is difficult to read, understand, 
+ and maintain due to its deeply nested structure.
+
+                 Promise in JavaScript
+
+ A promise in JavaScript is an object that represents the eventual completion or failure of an asynchronous operation. 
+ It allows you to handle asynchronous operations more easily and cleanly by providing a way to write asynchronous code that looks synchronous.
+
+ In simpler terms, a promise is like a placeholder for the result of an asynchronous operation. Or A container for the future result or value.
+
+ It can be in one of three states:
+
+ Pending: Initial state, neither fulfilled nor rejected.
+ Fulfilled(Resolved): The operation completed successfully.
+ Rejected: The operation failed or encountered an error.
+
+ Promises have built-in methods like then and catch to handle the results of asynchronous operations when they complete or encounter errors,
+ making it easier to write asynchronous code that is more readable and maintainable compared to traditional callback-based approaches.
+
+code:-----------------------------------------------------------------------------------------------------------------------------------------------------------
+// promises 
+const pr = new Promise((resolve,reject) => {  // P is capital in promise.
+      setTimeout(() => {
+         resolve(" hi this is sarvagya"); // or you can use reject
+      },2000);
+});
+
+// above  return value will be stored in pr 
+// so to handle pr we use  '.then'  or the return value  we can access or get here
+pr.then((res) => {
+    console.log(res); // after .then we have '.catch' method where if fulfill doesnot happen 
+    // so  reject happen then it will go in .catch.
+}).catch((error) => { // promise not done so we say error(any name)
+     console.log(error);
+}).finally(() => { // .finally means whether  wo reject hu ya resolved hu ya tu hona hi chaiya. 
+   console.log("I am the best");
+});
+
+// output 
+//hi this is sarvagya
+//I am the best
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
